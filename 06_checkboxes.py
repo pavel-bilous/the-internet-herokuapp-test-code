@@ -16,18 +16,28 @@ try:
     chekbox_link.click()
     
 
+     # get current status of all checkboxes
     for element in driver.find_elements(By.CSS_SELECTOR, 'input[type="checkbox"]'):
-        
-        isChecked = driver.find_element(By.TAG_NAME, "input").get_attribute("checked");
-        
-        if isChecked == 'true':
+        print("found checkbox with status: " + str(element.get_attribute("checked")))
+
+    # reverse checkmarks on all checkboxes
+    print("attempting to reverse all checkmarks...")
+    for element in driver.find_elements(By.CSS_SELECTOR, 'input[type="checkbox"]'):
             element.click()
-            isCheckedNew = driver.find_element(By.TAG_NAME, "input").get_attribute("false");
-            print('Test PASS.Succesfully Clicked  on checkbox')
-        else:
-            element.click()
-            isCheckedNew = driver.find_element(By.TAG_NAME, "input").get_attribute("true");
-            print('Test PASS.Succesfully Clicked  on checkbox')
+
+    # verify reversed checkmarks
+    print("getting status of all checkmarks")
+        
+
+    
+
+    """ 
+        isCheckedNew = driver.find_element(By.TAG_NAME, "input").get_attribute("false");
+        print('Test PASS.Succesfully Clicked  on checkbox')
+    else:
+        element.click()
+        isCheckedNew = driver.find_element(By.TAG_NAME, "input").get_attribute("true");
+        print('Test PASS.Succesfully Clicked  on checkbox') """
      
 finally:
     driver.quit()
